@@ -35,9 +35,18 @@ var server = http.createServer(function(req,res) {
 			return;
 		}
 
+
+		var faker = require("faker");
+		var randonName = faker.name.findName();
+		var randonImage = faker.internet.avatar();
+
 		//estamos começando a escrever a resposta do meu servidor
 		res.writeHead(200, {'Content-Type': 'text/html'}); 
 		res.write(contentReaded,"utf-8");
+
+		res.write('Your name is: '+ randonName);
+		res.write('<img src="'+ randonImage +'">');
+
 		res.end();
 
 	})
